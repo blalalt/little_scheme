@@ -409,7 +409,9 @@ def evaluate(expr, env=global_env):
 def read_eval_print_loop():
     prompt = 'LiteScheme>> '
     while True:
-        exprs = parser(input(prompt))
+        text = input(prompt)
+        if not text: continue
+        exprs = parser(text)
         res = [evaluate(expr) for expr in exprs][-1] # 只返回最后一个表达式的执行结果
         if res: print(res)
 ```
